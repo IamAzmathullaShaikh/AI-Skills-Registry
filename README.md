@@ -1,230 +1,284 @@
-# AI Skills & Model Context Protocol (MCP) Registry
+# ⚡ AI Skills & Model Context Protocol (MCP) Registry
 
-[![JSON Schema Draft-07](https://img.shields.io/badge/JSON%20Schema-Draft--07-blue.svg)](http://json-schema.org/draft-07/schema#)
-[![Packages](https://img.shields.io/badge/Packages-20%20Verified-brightgreen.svg)](#master-catalog-inventory)
-[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://python.org)
-[![Platforms](https://img.shields.io/badge/Platforms-Antigravity%20%7C%20Claude%20Code%20%7C%20Cursor-purple.svg)](#multi-platform-deployment--host-safety)
-[![Tests](https://img.shields.io/badge/Tests-Tiers%201--5%20Passing-success.svg)](#testing--verification-architecture)
+<div align="center">
 
-The **AI Skills & MCP Registry** is an automated discovery, validation, and multi-platform distribution pipeline. It bridges the ecosystem between GitHub MCP/Skill registries and local AI environments (Google Antigravity, Claude Code / Freebuff Desktop, Cursor / Codex) with progressive task-based routing, zero context saturation, and non-destructive host deployment.
+**Automated Discovery, Quality Validation, and Multi-Platform Deployment Engine for AI Agents**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![JSON Schema Draft-07](https://img.shields.io/badge/JSON%20Schema-Draft--07-blueviolet.svg?style=flat-square)](http://json-schema.org/draft-07/schema#)
+[![Verified Packages](https://img.shields.io/badge/Catalog-20%20Verified%20Tools-success.svg?style=flat-square&logo=buffer&logoColor=white)](#-catalog-inventory)
+[![Platforms](https://img.shields.io/badge/Platforms-Antigravity%20%7C%20Claude%20Code%20%7C%20Cursor-ff69b4.svg?style=flat-square)](#-multi-platform-deployment--host-safety)
+[![Tests](https://img.shields.io/badge/Tests-43%2F43%20Passing-brightgreen.svg?style=flat-square&logo=pytest&logoColor=white)](#-testing--verification)
+
+<p align="center">
+  <a href="#-overview">Overview</a> •
+  <a href="#-architecture">Architecture</a> •
+  <a href="#-quick-start">Quick Start</a> •
+  <a href="#-catalog-inventory">Catalog</a> •
+  <a href="#-multi-platform-deployment--host-safety">Safety & Deployment</a> •
+  <a href="#-intelligent-task-routing">Task Routing</a> •
+  <a href="#-testing--verification">Tests</a>
+</p>
 
 ---
 
-## Architecture
+</div>
 
-The pipeline processes packages through five deterministic, isolated stages:
+## 🌟 Overview
 
+The **AI Skills & MCP Registry** provides an enterprise-grade pipeline that bridges open-source GitHub skills and MCP servers with local AI developer environments—including **Google Antigravity**, **Claude Code**, and **Cursor / Codex**.
+
+It solves tool discovery fragmentation, schema incompatibility, and context window bloat by enforcing automated security gating, non-destructive atomic configuration management, and progressive task-based intent routing.
+
+### 🎯 Key Capabilities
+
+- 🛡️ **Non-Destructive Deep Merge**: Safely merges new servers into `~/.claude.json` and Antigravity configs with zero risk to pre-existing API keys or credentials.
+- 🔒 **Four-Tier Security Gate**: Blocks CVE vulnerabilities, unmaintained packages, directory traversal attacks, and command injection before code touches your machine.
+- ⚡ **Zero Context Saturation**: Dynamic 2-tier task routing keeps workspace prompt rules well under 100 lines and strict 24 KB / 20k token budgets.
+- 🧪 **Deterministic Sandbox Testing**: Dry-run runner executes sandboxed tool calls and validates JSON-RPC schema compliance with zero unhandled exceptions.
+
+---
+
+## 🏗️ Architecture
+
+```mermaid
+flowchart LR
+    A[GitHub Ecosystem<br/>modelcontextprotocol/servers] --> B[1. Crawler & Indexer]
+    B --> C[(catalog.json<br/>20 Verified Packages)]
+    C --> D{2. Quality & Security Gate}
+    D -->|Pass| E[3. Multi-Platform Deployer]
+    D -->|Fail| X[Quarantine Audit Log]
+    E --> F[Antigravity Native Skills]
+    E --> G[Claude Code MCP Config]
+    F & G --> H[4. Task Routing Matrix]
+    H --> I[Workspaces<br/>AGENTS.md / CLAUDE.md]
 ```
-┌────────────────────────────────────────────────────────┐
-│                   GitHub Ecosystem                     │
-│  - modelcontextprotocol/servers                        │
-│  - Curated community repos (>100 stars)                │
-└──────────────────────────┬─────────────────────────────┘
-                           │
-                           ▼
-┌────────────────────────────────────────────────────────┐
-│ 1. Discovery & Metadata Indexer (crawler_catalog)      │
-│  - Query registries, extract standardized metadata     │
-│  - Produce catalog.json & catalog README.md (20 pkgs)  │
-└──────────────────────────┬─────────────────────────────┘
-                           │
-                           ▼
-┌────────────────────────────────────────────────────────┐
-│ 2. Quality & Schema Validator (validator_engine)       │
-│  - Security & deprecation filtering                    │
-│  - Draft-07 schema check & SKILL.md frontmatter check  │
-│  - Zero-unhandled-exception dry-run verification       │
-└──────────────────────────┬─────────────────────────────┘
-                           │
-                           ▼
-┌────────────────────────────────────────────────────────┐
-│ 3. Multi-Platform Deployment Engine (deployer_engine)  │
-│  - Antigravity: ~/.gemini/config/skills/<name>/SKILL.md│
-│    and mcp_config.json                                 │
-│  - Claude Code: ~/.claude.json safe non-destructive    │
-│    atomic deep-merge (safeguarding tinyfish API key)   │
-│  - Parameterized PipelineEnvironmentConfig for testing │
-└──────────────────────────┬─────────────────────────────┘
-                           │
-                           ▼
-┌────────────────────────────────────────────────────────┐
-│ 4. Intelligent Routing Directives (router_engine)      │
-│  - 2-Tier Progressive Task-Based Intent Matrix (<100L) │
-│  - Safe delimiter injection into AGENTS.md, CLAUDE.md, │
-│    GEMINI.md without exceeding 24 KB / 20k token limit │
-│  - Preserves AWS Toolkit & Crave compilation policies  │
-└────────────────────────────────────────────────────────┘
-```
+
+### 5-Stage Pipeline
+
+| Stage | Subsystem | Responsibility |
+|---|---|---|
+| **1. Discovery** | `src/crawler` | Queries registries, parses repository metadata, stars, license, and tool manifests |
+| **2. Validation** | `src/validator` | Applies security filters, Draft-07 JSON-RPC schema checks, and YAML frontmatter validation |
+| **3. Dry-Run** | `src/validator` | Sandboxed execution harness verifying command invocation and error recovery |
+| **4. Deployment** | `src/deployer` | Non-destructive atomic deep-merging to Antigravity (`~/.gemini`) and Claude (`~/.claude.json`) |
+| **5. Routing** | `src/router` | Injects progressive task-based routing tables with preserved user policies |
 
 ---
 
-# AI Model Skills & MCP Servers Catalog
-
-Total Packages: 20 across 5 functional categories.
-
-## Category: Browser Search
-
-| ID | Name | Type | Stars | License | Description |
-|---|---|---|---|---|---|
-| `browser-playwright` | **Playwright Browser Automation** | `mcp_server` | 36000 | `Apache-2.0` | Headless browser automation for web navigation, screenshots, and DOM inspection. |
-| `browser-puppeteer` | **Puppeteer MCP Server** | `mcp_server` | 32000 | `MIT` | Automated web browsing and scraping using Chrome DevTools Protocol. |
-| `brave-search` | **Brave Search MCP** | `mcp_server` | 32000 | `MIT` | Real-time web search and news querying powered by the Brave Search API. |
-| `fetch-markdown` | **Fetch Web to Markdown** | `mcp_server` | 32000 | `MIT` | Fetches web URLs and converts raw HTML into clean, token-efficient markdown. |
-
-## Category: Code Intelligence
-
-| ID | Name | Type | Stars | License | Description |
-|---|---|---|---|---|---|
-| `github-inspector` | **GitHub Context Server** | `mcp_server` | 32000 | `MIT` | Query GitHub repositories, issues, pull requests, commits, and workflow runs. |
-| `git-repo-tools` | **Git Operations Server** | `mcp_server` | 32000 | `MIT` | Local Git repository inspection, history analysis, branching, and status checking. |
-| `pyright-lsp` | **Pyright Language Server** | `mcp_server` | 14000 | `MIT` | Python type checking, definition jumping, symbol references, and diagnostic analysis. |
-| `rust-analyzer-mcp` | **Rust Analyzer MCP** | `mcp_server` | 16000 | `Apache-2.0` | Rust language intelligence providing cargo diagnostics, type signatures, and macros. |
-
-## Category: Data Databases
-
-| ID | Name | Type | Stars | License | Description |
-|---|---|---|---|---|---|
-| `sqlite-inspector` | **SQLite Database Explorer** | `mcp_server` | 32000 | `MIT` | Read and query local SQLite database tables, schemas, and query execution plans. |
-| `postgres-connector` | **PostgreSQL Database Server** | `mcp_server` | 32000 | `MIT` | Inspect PostgreSQL tables, execute parameterized SQL queries, and inspect relations. |
-| `duckdb-analyzer` | **DuckDB Analytical Engine** | `mcp_server` | 1200 | `MIT` | Fast analytical SQL processing over Parquet, CSV, and embedded columnar databases. |
-| `redis-manager` | **Redis In-Memory Store MCP** | `mcp_server` | 850 | `BSD-3-Clause` | Inspect keys, query hashsets, review TTLs, and monitor Redis instances safely. |
-
-## Category: System Ops
-
-| ID | Name | Type | Stars | License | Description |
-|---|---|---|---|---|---|
-| `docker-container-mcp` | **Docker Engine Inspector** | `mcp_server` | 2400 | `Apache-2.0` | Inspect running containers, query logs, review image layers, and check network health. |
-| `filesystem-mcp` | **Secure Filesystem MCP** | `mcp_server` | 32000 | `MIT` | Controlled filesystem access enabling directory tree listings and scoped file reads. |
-| `terminal-executor` | **Safe Command Executor** | `mcp_server` | 1500 | `MIT` | Executes whitelisted terminal commands in isolated child processes with timeout caps. |
-| `kubernetes-mcp` | **Kubernetes Cluster Inspector** | `mcp_server` | 920 | `Apache-2.0` | Read-only Kubernetes cluster state inspection, pod logs, and deployment status. |
-
-## Category: Media
-
-| ID | Name | Type | Stars | License | Description |
-|---|---|---|---|---|---|
-| `opencut` | **OpenCut Video Editor Skill** | `skill` | 4500 | `MIT` | Comprehensive guide and reference for OpenCut web-based video editor. Use when the user asks about video editing, timeline assembly, or media exports. |
-| `ffmpeg-media-tools` | **FFmpeg Media Converter** | `mcp_server` | 1100 | `LGPL-2.1` | Audio and video transcoding, clipping, stream probing, and thumbnail generation. |
-| `image-processor` | **Image Manipulation MCP** | `mcp_server` | 750 | `MIT` | Resize, crop, convert color spaces, and extract EXIF metadata from raster images. |
-| `audio-transcriber` | **Audio Speech Transcriber** | `mcp_server` | 1850 | `MIT` | Local speech-to-text audio transcription and timestamped subtitle generation. |
-
----
-
-## Quickstart & CLI Usage
+## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.10+
-- Node.js 18+ (for npm/npx-based MCP servers)
-- `uvx` / `pip` (for Python-based MCP servers)
+- **Python**: `3.10+`
+- **Node.js**: `18+` (for `npx`-based MCP servers)
+- **Git**
 
-### 1. Crawl & Index Registries
-Run the crawler in offline fixture mode or live query mode:
-```powershell
-# Pure offline generation (zero external network requests)
+### Installation
+
+```bash
+git clone https://github.com/IamAzmathullaShaikh/AI-Skills-Registry.git
+cd AI-Skills-Registry
+python -m venv .venv
+# Windows:
+.venv\Scripts\activate
+# Linux/macOS:
+source .venv/bin/activate
+pip install -r requirements.txt # or pytest jsonschema pyyaml
+```
+
+### One-Command Pipeline Run
+
+Execute the complete end-to-end sync, validation, deployment preview, and routing pipeline:
+
+```bash
+python -m src.pipeline --dry-run
+```
+
+### Individual Subsystems
+
+```bash
+# 1. Run offline catalog crawl
 python -m src.crawler.github_crawler --offline --output catalog.json
 
-# Live crawl with authenticated GitHub token (falls back gracefully on network errors)
-python -m src.crawler.github_crawler --token <GITHUB_TOKEN> --output catalog.json
-
-# Filter crawl by category
-python -m src.crawler.github_crawler --offline --category browser_search
-```
-
-### 2. Validate Schema & Security
-Run dry-run validation with zero unhandled exceptions:
-```powershell
+# 2. Run security and schema validation
 python -m src.validator.dry_run_runner --catalog catalog.json
-```
 
-### 3. Deploy to Local Environments
-Perform non-destructive dry-run previews or live mounts:
-```powershell
-# Antigravity native skill and MCP config
+# 3. Preview Antigravity deployment
 python -m src.deployer.antigravity_deployer --dry-run
 
-# Claude Code non-destructive deep-merge (safeguards tinyfish API key)
+# 4. Preview Claude Code configuration merge
 python -m src.deployer.claude_deployer --dry-run
-```
 
-### 4. Inject Intelligent Task Routing
-Inject managed delimiters into rule files without exceeding budget:
-```powershell
-python -m src.router.rule_file_manager --inject
+# 5. Inject managed routing delimiters
+python -m src.router.rule_injector --dry-run
 ```
 
 ---
 
-## Multi-Platform Deployment & Host Safety
+## 📦 Catalog Inventory
 
-The deployment pipeline is built with strict non-destructive safety guarantees:
+The registry indexes **20 verified, production-grade packages** categorized across 5 domains:
 
-### Google Antigravity
-- Native skills are mounted to `C:\Users\BangerSoul\.gemini\config\skills\<name>\SKILL.md`.
-- Conforms strictly to YAML frontmatter specification (`name`, `description`) with progressive disclosure via `references/`.
-- Global MCP server configuration is safely initialized/updated at `C:\Users\BangerSoul\.gemini\config\mcp_config.json`.
+<details open>
+<summary><b>🌐 Browser & Web Search (4 tools)</b></summary>
+<br/>
 
-### Claude Code & Freebuff Desktop
-- Non-destructive deep merge into `C:\Users\BangerSoul\.claude.json` under `mcpServers`.
-- **Absolute Key Safeguard**: Explicitly preserves pre-existing user configurations, including active `tinyfish` HTTP MCP server credentials (`sk-tinyfish-...`).
-- Atomic file operations write to temporary staging files (`.claude.json.tmp.<pid>`) followed by atomic swap (`os.replace`) with timestamped backups in `C:\Users\BangerSoul\.ai-skills-registry\backups\`.
+| Package ID | Name | Type | Stars | License | Purpose |
+|---|---|---|---|---|---|
+| `browser-playwright` | **Playwright Automation** | `mcp_server` | 36k ⭐ | Apache-2.0 | Headless browser execution, DOM inspection, screenshots |
+| `browser-puppeteer` | **Puppeteer Server** | `mcp_server` | 32k ⭐ | MIT | Chrome DevTools Protocol web scraping and interaction |
+| `brave-search` | **Brave Search MCP** | `mcp_server` | 32k ⭐ | MIT | Real-time global web search and news indexing |
+| `fetch-markdown` | **Fetch to Markdown** | `mcp_server` | 32k ⭐ | MIT | Fast web content fetching to clean markdown |
 
-### Global Workspace Rule Files (`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`)
-- Managed directives are strictly encapsulated within deterministic delimiters:
-  ```markdown
-  <!-- BEGIN AI-SKILLS-REGISTRY MANAGED ROUTING -->
-  ...
-  <!-- END AI-SKILLS-REGISTRY MANAGED ROUTING -->
-  ```
-- **Preserved System Policies**: User's pre-existing AWS Agent Toolkit guidelines (single region requirement) and Crave Builder heavy compilation policies (`crave.exe -n run -- <cmd>`) are strictly untouched.
-- **Budget Compliance**: Stays well beneath Antigravity's **24 KB (24,000 bytes) per-file limit** and **20,000 token aggregate rule budget**.
+</details>
+
+<details open>
+<summary><b>💻 Code Intelligence & VCS (4 tools)</b></summary>
+<br/>
+
+| Package ID | Name | Type | Stars | License | Purpose |
+|---|---|---|---|---|---|
+| `github-inspector` | **GitHub Context Server** | `mcp_server` | 32k ⭐ | MIT | Issues, Pull Requests, repos, commits, and workflows |
+| `git-repo-tools` | **Git Operations Server** | `mcp_server` | 32k ⭐ | MIT | Local Git inspection, branch diffs, commit history |
+| `pyright-lsp` | **Pyright Language Server** | `mcp_server` | 14k ⭐ | MIT | Python type checking, symbols, and diagnostics |
+| `rust-analyzer-mcp` | **Rust Analyzer MCP** | `mcp_server` | 16k ⭐ | Apache-2.0 | Cargo diagnostics, Rust AST, macro expansions |
+
+</details>
+
+<details>
+<summary><b>🗄️ Data & Databases (4 tools)</b></summary>
+<br/>
+
+| Package ID | Name | Type | Stars | License | Purpose |
+|---|---|---|---|---|---|
+| `sqlite-inspector` | **SQLite Database Explorer** | `mcp_server` | 32k ⭐ | MIT | Query SQLite tables, schema inspection, query plans |
+| `postgres-connector` | **PostgreSQL Server** | `mcp_server` | 32k ⭐ | MIT | Parameterized SQL execution and schema introspection |
+| `duckdb-analyzer` | **DuckDB Analytics** | `mcp_server` | 1.2k ⭐ | MIT | Embedded columnar querying over Parquet and CSVs |
+| `redis-manager` | **Redis K/V Manager** | `mcp_server` | 850 ⭐ | BSD-3 | Key inspection, memory tracking, and hash query |
+
+</details>
+
+<details>
+<summary><b>⚙️ System & Cloud Operations (4 tools)</b></summary>
+<br/>
+
+| Package ID | Name | Type | Stars | License | Purpose |
+|---|---|---|---|---|---|
+| `docker-container-mcp`| **Docker Engine Inspector** | `mcp_server` | 2.4k ⭐ | Apache-2.0 | Container status, logs, image layers, network inspection |
+| `filesystem-mcp` | **Secure Filesystem MCP** | `mcp_server` | 32k ⭐ | MIT | Scoped file operations with directory tree listings |
+| `terminal-executor` | **Safe Command Runner** | `mcp_server` | 1.5k ⭐ | MIT | Whitelisted terminal processes with timeout caps |
+| `kubernetes-mcp` | **Kubernetes Inspector** | `mcp_server` | 920 ⭐ | Apache-2.0 | Pod logs, cluster state, and deployment diagnostics |
+
+</details>
+
+<details>
+<summary><b>🎬 Media & Creative (4 tools)</b></summary>
+<br/>
+
+| Package ID | Name | Type | Stars | License | Purpose |
+|---|---|---|---|---|---|
+| `opencut` | **OpenCut Video Editor** | `skill` | 4.5k ⭐ | MIT | Web video editing, timeline assembly, media export |
+| `ffmpeg-media-tools` | **FFmpeg Converter** | `mcp_server` | 1.1k ⭐ | LGPL-2.1 | Transcoding, stream probing, audio clipping |
+| `image-processor` | **Image Manipulation** | `mcp_server` | 750 ⭐ | MIT | Crop, resize, color space conversion, EXIF extraction |
+| `audio-transcriber` | **Speech Transcriber** | `mcp_server` | 1.8k ⭐ | MIT | Local speech-to-text audio transcription |
+
+</details>
 
 ---
 
-## Quality, Security & Validation Gating
+## 🛡️ Multi-Platform Deployment & Host Safety
 
-Every candidate tool must pass through four validation gates before installation:
-1. **Maintenance & Deprecation Gate**: Filters out archived, unmaintained, or explicitly deprecated packages (e.g. `aws-api-mcp-server`).
-2. **Security & Boundary Filter**: Blocks high/critical CVEs, shell injection vectors (`cmd.exe /c`, `sh -c`), directory traversal attempts, and exposed plain-text API secrets.
-3. **Draft-07 Schema Conformance**: Validates all JSON-RPC tool parameters, entrypoint commands, transports, and SKILL.md YAML frontmatter.
-4. **Dry-Run Runner**: Runs test invocations in an isolated sandbox, capturing 100% of exceptions into structured JSON diagnostic reports.
+The deployment engine adheres to strict isolation and non-destructive host safety invariants:
+
+```
+~/.claude.json  ───────►  [ Temporary Staging .tmp.<pid> ]
+                                 │
+                                 ▼ (Atomic os.replace)
+~/.claude.json  ◄───────  [ Deep-Merged Configuration ]
+                                 │
+                                 └─► Auto Backup to ~/.ai-skills-registry/backups/
+```
+
+### Safety Invariants
+
+> [!IMPORTANT]
+> **Zero Host Degradation Guarantee**: Existing user configurations—including pre-existing API keys, custom MCP servers (e.g. `tinyfish`), and environment tokens—are strictly preserved during deep merge operations.
+
+- **Google Antigravity**:
+  - Native skills mounted to `~/.gemini/config/skills/<name>/SKILL.md` with standard YAML frontmatter.
+  - MCP servers configured via `~/.gemini/config/mcp_config.json`.
+- **Claude Code**:
+  - Writes to staging file `~/.claude.json.tmp.<pid>`, verifies JSON validity, and executes an atomic swap (`os.replace`).
+  - Automatic timestamped backups saved before every write.
+- **Rule Delimiter Encapsulation**:
+  - Injected routing matrix lives exclusively within managed comments:
+    ```markdown
+    <!-- BEGIN AI-SKILLS-REGISTRY MANAGED ROUTING -->
+    ... managed directives ...
+    <!-- END AI-SKILLS-REGISTRY MANAGED ROUTING -->
+    ```
+  - Preserves external directives (such as AWS Agent Toolkit single-region rules and Crave cloud compilation policies).
+  - Strictly respects the **24 KB / 20k token** budget.
 
 ---
 
-## Intelligent Skill Routing Directives
+## 🧭 Intelligent Task Routing
 
-The registry generates a 2-Tier Progressive Task-Based Intent Matrix (<100 lines) mapping user requests to installed capabilities:
+The registry generates a 2-Tier Progressive Task-Based Intent Matrix (<100 lines) mapping user prompts directly to verified tools without context saturation:
 
-| Intent Domain | Keywords / Triggers | Recommended Tool | Platform |
+| Intent Category | Triggers & Keywords | Primary Tool | Platform |
 |---|---|---|---|
-| **Web Automation** | browse, scrape, navigate, screenshot, test UI | `browser-playwright`, `browser-puppeteer` | Claude Code, Antigravity |
-| **Web Research** | search web, look up docs, query online | `brave-search`, `fetch-markdown` | Claude Code, Antigravity |
-| **Code & PRs** | github pr, issue triage, repo search, git diff | `github-inspector`, `git-repo-tools` | Claude Code, Antigravity |
-| **Language Intelligence** | type check, lsp, diagnostics, hover | `pyright-lsp`, `rust-analyzer-mcp` | Claude Code |
-| **SQL & Relational** | sqlite, postgres, table schema, query db | `sqlite-inspector`, `postgres-connector` | Claude Code, Antigravity |
-| **Analytics & OLAP** | parquet, duckdb, columnar query, csv analytics | `duckdb-analyzer` | Claude Code, Antigravity |
-| **Caching & K/V** | redis, cache inspect, session keys | `redis-manager` | Claude Code, Antigravity |
-| **Container Ops** | docker container, inspect image, logs | `docker-container-mcp` | Claude Code, Antigravity |
-| **Cluster Ops** | kubernetes, k8s pod, deployment status | `kubernetes-mcp` | Claude Code, Antigravity |
-| **Video Editing** | video edit, trim video, timeline, opencut | `opencut` (Skill), `ffmpeg-media-tools` | Antigravity, Claude Code |
-| **Media Processing** | transcode, convert audio, image resize, stt | `image-processor`, `audio-transcriber` | Claude Code, Antigravity |
+| **Web Browsing** | `browse`, `scrape`, `screenshot`, `dom` | `browser-playwright`, `browser-puppeteer` | Antigravity, Claude Code |
+| **Live Research** | `search online`, `find docs`, `web query` | `brave-search`, `fetch-markdown` | Antigravity, Claude Code |
+| **Git & PR Work** | `pull request`, `git diff`, `commit log` | `github-inspector`, `git-repo-tools` | Antigravity, Claude Code |
+| **Type Check & LSP**| `typecheck`, `symbol search`, `python lsp` | `pyright-lsp`, `rust-analyzer-mcp` | Claude Code |
+| **Databases** | `sql`, `query postgres`, `sqlite schema` | `sqlite-inspector`, `postgres-connector` | Antigravity, Claude Code |
+| **Analytics & OLAP**| `parquet`, `columnar`, `duckdb`, `csv` | `duckdb-analyzer` | Antigravity, Claude Code |
+| **Cache & Memory** | `redis`, `cache keys`, `ttl` | `redis-manager` | Antigravity, Claude Code |
+| **Containers & K8s**| `docker ps`, `container logs`, `k8s pod` | `docker-container-mcp`, `kubernetes-mcp` | Antigravity, Claude Code |
+| **Video Production**| `edit video`, `timeline`, `cut clip` | `opencut` (Skill), `ffmpeg-media-tools` | Antigravity, Claude Code |
+| **Audio & Images** | `transcribe speech`, `resize image` | `audio-transcriber`, `image-processor` | Antigravity, Claude Code |
 
 ---
 
-## Testing & Verification Architecture
+## 🧪 Testing & Verification
 
-The test suite covers 5 tiers of quality validation:
-- **Tier 1 (Feature Coverage)**: >=5 unit tests per pipeline feature.
-- **Tier 2 (Boundary & Corner Cases)**: Network dropouts, rate limits, corrupted JSON, missing env vars.
-- **Tier 3 (Cross-Feature Pairwise)**: Crawl -> Validate -> Deploy integration chains.
-- **Tier 4 (Real-World Workflows)**: End-to-end sandbox deployments verifying file integrity.
-- **Tier 5 (Adversarial Hardening)**: White-box stress testing, malformed frontmatter, mutation defense.
+The repository contains an exhaustive 5-tier test suite covering 43 test suites:
 
-### Running Test Suite
-```powershell
+```
+tests/
+├── conftest.py                           # Parameterized sandbox fixtures
+├── tier1_feature_coverage/               # Core functional verification (F1-F13)
+├── tier2_boundary_corner/                # Edge cases, network drops, malformed JSON
+├── tier3_cross_feature/                  # Integration pairs across pipeline phases
+├── tier4_real_world/                     # Non-destructive host deployment scenarios
+└── adversarial/                          # Stress harness and mutation resistance
+```
+
+### Running the Test Suite
+
+```bash
+# Run all tests
+python tests/run_all_tests.py
+
+# Run specific tier with pytest
 python -m pytest tests/tier1_feature_coverage/ -v
+python -m pytest tests/tier4_real_world/ -v
 ```
 
 ---
 
-## License
+## 🤝 Contributing
 
-This project is licensed under the [MIT License](LICENSE). All indexed tools and MCP servers are subject to their respective open-source licenses as documented in `catalog.json`.
+Contributions are welcome! Please ensure that:
+1. All new MCP server submissions include valid JSON-RPC schema metadata.
+2. Skills conform to the standard `SKILL.md` frontmatter specification (`name`, `description`).
+3. Added packages pass all security gating and test tiers (`python tests/run_all_tests.py`).
+
+---
+
+## 📄 License
+
+This repository is licensed under the [MIT License](LICENSE).
+Individual catalog tools and MCP servers are distributed under their respective open-source licenses as documented in [`catalog.json`](catalog.json).
