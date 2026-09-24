@@ -1,0 +1,890 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "version": "1.0.0",
+  "last_updated": "2026-09-23T20:24:43.958617+00:00",
+  "total_packages": 20,
+  "categories": [
+    "browser_search",
+    "code_intelligence",
+    "data_databases",
+    "system_ops",
+    "media"
+  ],
+  "packages": [
+    {
+      "id": "browser-playwright",
+      "name": "Playwright Browser Automation",
+      "category": "browser_search",
+      "type": "mcp_server",
+      "description": "Headless browser automation for web navigation, screenshots, and DOM inspection.",
+      "repo_url": "https://github.com/microsoft/playwright-mcp",
+      "stars": 36000,
+      "maintainer": "Microsoft",
+      "capabilities": [
+        "browser_navigate",
+        "browser_click",
+        "browser_screenshot"
+      ],
+      "entrypoint": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@playwright/mcp@latest"
+        ],
+        "env": {}
+      },
+      "dependencies": {
+        "node": ">=18"
+      },
+      "license": "Apache-2.0",
+      "validation_status": "verified",
+      "platform_targets": [
+        "antigravity",
+        "claude_code"
+      ],
+      "security_notes": {
+        "filesystem_access": "none",
+        "network_access": "full",
+        "credentials_required": [],
+        "sandbox_safe": true
+      },
+      "crawl_metadata": {
+        "source": "offline_seed",
+        "timestamp": "2026-09-23T20:24:43.957054+00:00",
+        "warnings": [],
+        "latency_ms": 0.0
+      }
+    },
+    {
+      "id": "browser-puppeteer",
+      "name": "Puppeteer MCP Server",
+      "category": "browser_search",
+      "type": "mcp_server",
+      "description": "Automated web browsing and scraping using Chrome DevTools Protocol.",
+      "repo_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/puppeteer",
+      "stars": 32000,
+      "maintainer": "Model Context Protocol Authors",
+      "capabilities": [
+        "navigate",
+        "screenshot",
+        "evaluate_js"
+      ],
+      "entrypoint": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-puppeteer"
+        ],
+        "env": {}
+      },
+      "dependencies": {
+        "node": ">=18"
+      },
+      "license": "MIT",
+      "validation_status": "verified",
+      "platform_targets": [
+        "antigravity",
+        "claude_code"
+      ],
+      "security_notes": {
+        "filesystem_access": "scoped_read_write",
+        "network_access": "full",
+        "credentials_required": [],
+        "sandbox_safe": true
+      },
+      "crawl_metadata": {
+        "source": "offline_seed",
+        "timestamp": "2026-09-23T20:24:43.957203+00:00",
+        "warnings": [],
+        "latency_ms": 0.0
+      }
+    },
+    {
+      "id": "brave-search",
+      "name": "Brave Search MCP",
+      "category": "browser_search",
+      "type": "mcp_server",
+      "description": "Real-time web search and news querying powered by the Brave Search API.",
+      "repo_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search",
+      "stars": 32000,
+      "maintainer": "Model Context Protocol Authors",
+      "capabilities": [
+        "brave_web_search",
+        "brave_local_search"
+      ],
+      "entrypoint": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-brave-search"
+        ],
+        "env": {
+          "BRAVE_API_KEY": "${BRAVE_API_KEY}"
+        }
+      },
+      "dependencies": {
+        "node": ">=18"
+      },
+      "license": "MIT",
+      "validation_status": "verified",
+      "platform_targets": [
+        "antigravity",
+        "claude_code"
+      ],
+      "security_notes": {
+        "filesystem_access": "none",
+        "network_access": "outbound_http",
+        "credentials_required": [
+          "BRAVE_API_KEY"
+        ],
+        "sandbox_safe": true
+      },
+      "crawl_metadata": {
+        "source": "offline_seed",
+        "timestamp": "2026-09-23T20:24:43.957279+00:00",
+        "warnings": [],
+        "latency_ms": 0.0
+      }
+    },
+    {
+      "id": "fetch-markdown",
+      "name": "Fetch Web to Markdown",
+      "category": "browser_search",
+      "type": "mcp_server",
+      "description": "Fetches web URLs and converts raw HTML into clean, token-efficient markdown.",
+      "repo_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch",
+      "stars": 32000,
+      "maintainer": "Model Context Protocol Authors",
+      "capabilities": [
+        "fetch_url"
+      ],
+      "entrypoint": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-fetch"
+        ],
+        "env": {}
+      },
+      "dependencies": {
+        "python": ">=3.10"
+      },
+      "license": "MIT",
+      "validation_status": "verified",
+      "platform_targets": [
+        "antigravity",
+        "claude_code"
+      ],
+      "security_notes": {
+        "filesystem_access": "none",
+        "network_access": "outbound_http",
+        "credentials_required": [],
+        "sandbox_safe": true
+      },
+      "crawl_metadata": {
+        "source": "offline_seed",
+        "timestamp": "2026-09-23T20:24:43.957342+00:00",
+        "warnings": [],
+        "latency_ms": 0.0
+      }
+    },
+    {
+      "id": "github-inspector",
+      "name": "GitHub Context Server",
+      "category": "code_intelligence",
+      "type": "mcp_server",
+      "description": "Query GitHub repositories, issues, pull requests, commits, and workflow runs.",
+      "repo_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/github",
+      "stars": 32000,
+      "maintainer": "GitHub",
+      "capabilities": [
+        "search_repositories",
+        "get_file_contents",
+        "list_issues"
+      ],
+      "entrypoint": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-github"
+        ],
+        "env": {
+          "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+        }
+      },
+      "dependencies": {
+        "node": ">=18"
+      },
+      "license": "MIT",
+      "validation_status": "verified",
+      "platform_targets": [
+        "antigravity",
+        "claude_code"
+      ],
+      "security_notes": {
+        "filesystem_access": "none",
+        "network_access": "outbound_http",
+        "credentials_required": [
+          "GITHUB_PERSONAL_ACCESS_TOKEN"
+        ],
+        "sandbox_safe": true
+      },
+      "crawl_metadata": {
+        "source": "offline_seed",
+        "timestamp": "2026-09-23T20:24:43.957403+00:00",
+        "warnings": [],
+        "latency_ms": 0.0
+      }
+    },
+    {
+      "id": "git-repo-tools",
+      "name": "Git Operations Server",
+      "category": "code_intelligence",
+      "type": "mcp_server",
+      "description": "Local Git repository inspection, history analysis, branching, and status checking.",
+      "repo_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/git",
+      "stars": 32000,
+      "maintainer": "Model Context Protocol Authors",
+      "capabilities": [
+        "git_status",
+        "git_diff",
+        "git_log"
+      ],
+      "entrypoint": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-git"
+        ],
+        "env": {}
+      },
+      "dependencies": {
+        "python": ">=3.10"
+      },
+      "license": "MIT",
+      "validation_status": "verified",
+      "platform_targets": [
+        "antigravity",
+        "claude_code"
+      ],
+      "security_notes": {
+        "filesystem_access": "scoped_read_write",
+        "network_access": "local_only",
+        "credentials_required": [],
+        "sandbox_safe": true
+      },
+      "crawl_metadata": {
+        "source": "offline_seed",
+        "timestamp": "2026-09-23T20:24:43.957460+00:00",
+        "warnings": [],
+        "latency_ms": 0.0
+      }
+    },
+    {
+      "id": "pyright-lsp",
+      "name": "Pyright Language Server",
+      "category": "code_intelligence",
+      "type": "mcp_server",
+      "description": "Python type checking, definition jumping, symbol references, and diagnostic analysis.",
+      "repo_url": "https://github.com/microsoft/pyright",
+      "stars": 14000,
+      "maintainer": "Microsoft",
+      "capabilities": [
+        "goto_definition",
+        "find_references",
+        "type_check"
+      ],
+      "entrypoint": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "pyright-mcp-server"
+        ],
+        "env": {}
+      },
+      "dependencies": {
+        "node": ">=18"
+      },
+      "license": "MIT",
+      "validation_status": "verified",
+      "platform_targets": [
+        "claude_code"
+      ],
+      "security_notes": {
+        "filesystem_access": "scoped_read_write",
+        "network_access": "none",
+        "credentials_required": [],
+        "sandbox_safe": true
+      },
+      "crawl_metadata": {
+        "source": "offline_seed",
+        "timestamp": "2026-09-23T20:24:43.957514+00:00",
+        "warnings": [],
+        "latency_ms": 0.0
+      }
+    },
+    {
+      "id": "rust-analyzer-mcp",
+      "name": "Rust Analyzer MCP",
+      "category": "code_intelligence",
+      "type": "mcp_server",
+      "description": "Rust language intelligence providing cargo diagnostics, type signatures, and macros.",
+      "repo_url": "https://github.com/rust-lang/rust-analyzer",
+      "stars": 16000,
+      "maintainer": "rust-lang",
+      "capabilities": [
+        "rust_diagnostics",
+        "rust_hover",
+        "rust_expand_macro"
+      ],
+      "entrypoint": {
+        "command": "rust-analyzer-mcp",
+        "args": [],
+        "env": {}
+      },
+      "dependencies": {
+        "rust": ">=1.75"
+      },
+      "license": "Apache-2.0",
+      "validation_status": "verified",
+      "platform_targets": [
+        "claude_code"
+      ],
+      "security_notes": {
+        "filesystem_access": "scoped_read_write",
+        "network_access": "none",
+        "credentials_required": [],
+        "sandbox_safe": true
+      },
+      "crawl_metadata": {
+        "source": "offline_seed",
+        "timestamp": "2026-09-23T20:24:43.957570+00:00",
+        "warnings": [],
+        "latency_ms": 0.0
+      }
+    },
+    {
+      "id": "sqlite-inspector",
+      "name": "SQLite Database Explorer",
+      "category": "data_databases",
+      "type": "mcp_server",
+      "description": "Read and query local SQLite database tables, schemas, and query execution plans.",
+      "repo_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite",
+      "stars": 32000,
+      "maintainer": "Model Context Protocol Authors",
+      "capabilities": [
+        "read_query",
+        "describe_table",
+        "list_tables"
+      ],
+      "entrypoint": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-sqlite",
+          "--db-path",
+          "test.db"
+        ],
+        "env": {}
+      },
+      "dependencies": {
+        "python": ">=3.10"
+      },
+      "license": "MIT",
+      "validation_status": "verified",
+      "platform_targets": [
+        "antigravity",
+        "claude_code"
+      ],
+      "security_notes": {
+        "filesystem_access": "scoped_read_write",
+        "network_access": "none",
+        "credentials_required": [],
+        "sandbox_safe": true
+      },
+      "crawl_metadata": {
+        "source": "offline_seed",
+        "timestamp": "2026-09-23T20:24:43.957635+00:00",
+        "warnings": [],
+        "latency_ms": 0.0
+      }
+    },
+    {
+      "id": "postgres-connector",
+      "name": "PostgreSQL Database Server",
+      "category": "data_databases",
+      "type": "mcp_server",
+      "description": "Inspect PostgreSQL tables, execute parameterized SQL queries, and inspect relations.",
+      "repo_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/postgres",
+      "stars": 32000,
+      "maintainer": "Model Context Protocol Authors",
+      "capabilities": [
+        "query",
+        "get_schema",
+        "explain_query"
+      ],
+      "entrypoint": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-postgres",
+          "postgresql://localhost/db"
+        ],
+        "env": {}
+      },
+      "dependencies": {
+        "node": ">=18"
+      },
+      "license": "MIT",
+      "validation_status": "verified",
+      "platform_targets": [
+        "antigravity",
+        "claude_code"
+      ],
+      "security_notes": {
+        "filesystem_access": "none",
+        "network_access": "outbound_http",
+        "credentials_required": [
+          "POSTGRES_URL"
+        ],
+        "sandbox_safe": true
+      },
+      "crawl_metadata": {
+        "source": "offline_seed",
+        "timestamp": "2026-09-23T20:24:43.957735+00:00",
+        "warnings": [],
+        "latency_ms": 0.0
+      }
+    },
+    {
+      "id": "duckdb-analyzer",
+      "name": "DuckDB Analytical Engine",
+      "category": "data_databases",
+      "type": "mcp_server",
+      "description": "Fast analytical SQL processing over Parquet, CSV, and embedded columnar databases.",
+      "repo_url": "https://github.com/duckdb/duckdb-mcp",
+      "stars": 1200,
+      "maintainer": "DuckDB Community",
+      "capabilities": [
+        "execute_sql",
+        "export_parquet",
+        "describe_dataset"
+      ],
+      "entrypoint": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-duckdb"
+        ],
+        "env": {}
+      },
+      "dependencies": {
+        "python": ">=3.10"
+      },
+      "license": "MIT",
+      "validation_status": "verified",
+      "platform_targets": [
+        "antigravity",
+        "claude_code"
+      ],
+      "security_notes": {
+        "filesystem_access": "scoped_read_write",
+        "network_access": "none",
+        "credentials_required": [],
+        "sandbox_safe": true
+      },
+      "crawl_metadata": {
+        "source": "offline_seed",
+        "timestamp": "2026-09-23T20:24:43.957807+00:00",
+        "warnings": [],
+        "latency_ms": 0.0
+      }
+    },
+    {
+      "id": "redis-manager",
+      "name": "Redis In-Memory Store MCP",
+      "category": "data_databases",
+      "type": "mcp_server",
+      "description": "Inspect keys, query hashsets, review TTLs, and monitor Redis instances safely.",
+      "repo_url": "https://github.com/redis/mcp-server-redis",
+      "stars": 850,
+      "maintainer": "Redis Community",
+      "capabilities": [
+        "get_key",
+        "scan_keys",
+        "get_info"
+      ],
+      "entrypoint": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@redis/mcp-server-redis"
+        ],
+        "env": {}
+      },
+      "dependencies": {
+        "node": ">=18"
+      },
+      "license": "BSD-3-Clause",
+      "validation_status": "verified",
+      "platform_targets": [
+        "antigravity",
+        "claude_code"
+      ],
+      "security_notes": {
+        "filesystem_access": "none",
+        "network_access": "local_only",
+        "credentials_required": [],
+        "sandbox_safe": true
+      },
+      "crawl_metadata": {
+        "source": "offline_seed",
+        "timestamp": "2026-09-23T20:24:43.957904+00:00",
+        "warnings": [],
+        "latency_ms": 0.0
+      }
+    },
+    {
+      "id": "docker-container-mcp",
+      "name": "Docker Engine Inspector",
+      "category": "system_ops",
+      "type": "mcp_server",
+      "description": "Inspect running containers, query logs, review image layers, and check network health.",
+      "repo_url": "https://github.com/docker/mcp-server-docker",
+      "stars": 2400,
+      "maintainer": "Docker Community",
+      "capabilities": [
+        "list_containers",
+        "inspect_container",
+        "get_logs"
+      ],
+      "entrypoint": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "docker/mcp-server-docker"
+        ],
+        "env": {}
+      },
+      "dependencies": {
+        "docker": ">=24"
+      },
+      "license": "Apache-2.0",
+      "validation_status": "verified",
+      "platform_targets": [
+        "antigravity",
+        "claude_code"
+      ],
+      "security_notes": {
+        "filesystem_access": "none",
+        "network_access": "local_only",
+        "credentials_required": [],
+        "sandbox_safe": true
+      },
+      "crawl_metadata": {
+        "source": "offline_seed",
+        "timestamp": "2026-09-23T20:24:43.957969+00:00",
+        "warnings": [],
+        "latency_ms": 0.0
+      }
+    },
+    {
+      "id": "filesystem-mcp",
+      "name": "Secure Filesystem MCP",
+      "category": "system_ops",
+      "type": "mcp_server",
+      "description": "Controlled filesystem access enabling directory tree listings and scoped file reads.",
+      "repo_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+      "stars": 32000,
+      "maintainer": "Model Context Protocol Authors",
+      "capabilities": [
+        "read_file",
+        "list_directory",
+        "search_files"
+      ],
+      "entrypoint": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-filesystem",
+          "."
+        ],
+        "env": {}
+      },
+      "dependencies": {
+        "node": ">=18"
+      },
+      "license": "MIT",
+      "validation_status": "verified",
+      "platform_targets": [
+        "antigravity",
+        "claude_code"
+      ],
+      "security_notes": {
+        "filesystem_access": "scoped_read_write",
+        "network_access": "none",
+        "credentials_required": [],
+        "sandbox_safe": true
+      },
+      "crawl_metadata": {
+        "source": "offline_seed",
+        "timestamp": "2026-09-23T20:24:43.958025+00:00",
+        "warnings": [],
+        "latency_ms": 0.0
+      }
+    },
+    {
+      "id": "terminal-executor",
+      "name": "Safe Command Executor",
+      "category": "system_ops",
+      "type": "mcp_server",
+      "description": "Executes whitelisted terminal commands in isolated child processes with timeout caps.",
+      "repo_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/terminal",
+      "stars": 1500,
+      "maintainer": "Model Context Protocol Authors",
+      "capabilities": [
+        "run_whitelisted_command"
+      ],
+      "entrypoint": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-terminal"
+        ],
+        "env": {}
+      },
+      "dependencies": {
+        "python": ">=3.10"
+      },
+      "license": "MIT",
+      "validation_status": "verified",
+      "platform_targets": [
+        "antigravity",
+        "claude_code"
+      ],
+      "security_notes": {
+        "filesystem_access": "scoped_read_write",
+        "network_access": "none",
+        "credentials_required": [],
+        "sandbox_safe": true
+      },
+      "crawl_metadata": {
+        "source": "offline_seed",
+        "timestamp": "2026-09-23T20:24:43.958080+00:00",
+        "warnings": [],
+        "latency_ms": 0.0
+      }
+    },
+    {
+      "id": "kubernetes-mcp",
+      "name": "Kubernetes Cluster Inspector",
+      "category": "system_ops",
+      "type": "mcp_server",
+      "description": "Read-only Kubernetes cluster state inspection, pod logs, and deployment status.",
+      "repo_url": "https://github.com/kubernetes/mcp-server-k8s",
+      "stars": 920,
+      "maintainer": "Kubernetes Community",
+      "capabilities": [
+        "get_pods",
+        "get_services",
+        "get_deployment_status"
+      ],
+      "entrypoint": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@k8s/mcp-server"
+        ],
+        "env": {}
+      },
+      "dependencies": {
+        "node": ">=18"
+      },
+      "license": "Apache-2.0",
+      "validation_status": "verified",
+      "platform_targets": [
+        "antigravity",
+        "claude_code"
+      ],
+      "security_notes": {
+        "filesystem_access": "scoped_read_write",
+        "network_access": "outbound_http",
+        "credentials_required": [
+          "KUBECONFIG"
+        ],
+        "sandbox_safe": true
+      },
+      "crawl_metadata": {
+        "source": "offline_seed",
+        "timestamp": "2026-09-23T20:24:43.958164+00:00",
+        "warnings": [],
+        "latency_ms": 0.0
+      }
+    },
+    {
+      "id": "opencut",
+      "name": "OpenCut Video Editor Skill",
+      "category": "media",
+      "type": "skill",
+      "description": "Comprehensive guide and reference for OpenCut web-based video editor. Use when the user asks about video editing, timeline assembly, or media exports.",
+      "repo_url": "https://github.com/opencut/opencut",
+      "stars": 4500,
+      "maintainer": "OpenCut Community",
+      "capabilities": [
+        "video_timeline_edit",
+        "wasm_video_processing",
+        "media_slice"
+      ],
+      "entrypoint": {
+        "command": "internal",
+        "args": [],
+        "env": {}
+      },
+      "dependencies": {},
+      "license": "MIT",
+      "validation_status": "verified",
+      "platform_targets": [
+        "antigravity"
+      ],
+      "security_notes": {
+        "filesystem_access": "none",
+        "network_access": "none",
+        "credentials_required": [],
+        "sandbox_safe": true
+      },
+      "crawl_metadata": {
+        "source": "offline_seed",
+        "timestamp": "2026-09-23T20:24:43.958223+00:00",
+        "warnings": [],
+        "latency_ms": 0.0
+      }
+    },
+    {
+      "id": "ffmpeg-media-tools",
+      "name": "FFmpeg Media Converter",
+      "category": "media",
+      "type": "mcp_server",
+      "description": "Audio and video transcoding, clipping, stream probing, and thumbnail generation.",
+      "repo_url": "https://github.com/ffmpeg-mcp/server",
+      "stars": 1100,
+      "maintainer": "FFmpeg MCP Community",
+      "capabilities": [
+        "probe_media",
+        "transcode_stream",
+        "generate_thumbnail"
+      ],
+      "entrypoint": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-ffmpeg"
+        ],
+        "env": {}
+      },
+      "dependencies": {
+        "python": ">=3.10"
+      },
+      "license": "LGPL-2.1",
+      "validation_status": "verified",
+      "platform_targets": [
+        "antigravity",
+        "claude_code"
+      ],
+      "security_notes": {
+        "filesystem_access": "scoped_read_write",
+        "network_access": "none",
+        "credentials_required": [],
+        "sandbox_safe": true
+      },
+      "crawl_metadata": {
+        "source": "offline_seed",
+        "timestamp": "2026-09-23T20:24:43.958314+00:00",
+        "warnings": [],
+        "latency_ms": 0.0
+      }
+    },
+    {
+      "id": "image-processor",
+      "name": "Image Manipulation MCP",
+      "category": "media",
+      "type": "mcp_server",
+      "description": "Resize, crop, convert color spaces, and extract EXIF metadata from raster images.",
+      "repo_url": "https://github.com/image-mcp/processor",
+      "stars": 750,
+      "maintainer": "Image MCP Community",
+      "capabilities": [
+        "resize_image",
+        "extract_exif",
+        "convert_format"
+      ],
+      "entrypoint": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@media/image-processor-mcp"
+        ],
+        "env": {}
+      },
+      "dependencies": {
+        "node": ">=18"
+      },
+      "license": "MIT",
+      "validation_status": "verified",
+      "platform_targets": [
+        "antigravity",
+        "claude_code"
+      ],
+      "security_notes": {
+        "filesystem_access": "scoped_read_write",
+        "network_access": "none",
+        "credentials_required": [],
+        "sandbox_safe": true
+      },
+      "crawl_metadata": {
+        "source": "offline_seed",
+        "timestamp": "2026-09-23T20:24:43.958421+00:00",
+        "warnings": [],
+        "latency_ms": 0.0
+      }
+    },
+    {
+      "id": "audio-transcriber",
+      "name": "Audio Speech Transcriber",
+      "category": "media",
+      "type": "mcp_server",
+      "description": "Local speech-to-text audio transcription and timestamped subtitle generation.",
+      "repo_url": "https://github.com/whisper-mcp/transcriber",
+      "stars": 1850,
+      "maintainer": "Whisper MCP Community",
+      "capabilities": [
+        "transcribe_audio",
+        "generate_vtt",
+        "detect_language"
+      ],
+      "entrypoint": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-whisper"
+        ],
+        "env": {}
+      },
+      "dependencies": {
+        "python": ">=3.10"
+      },
+      "license": "MIT",
+      "validation_status": "verified",
+      "platform_targets": [
+        "antigravity",
+        "claude_code"
+      ],
+      "security_notes": {
+        "filesystem_access": "scoped_read_write",
+        "network_access": "none",
+        "credentials_required": [],
+        "sandbox_safe": true
+      },
+      "crawl_metadata": {
+        "source": "offline_seed",
+        "timestamp": "2026-09-23T20:24:43.958514+00:00",
+        "warnings": [],
+        "latency_ms": 0.0
+      }
+    }
+  ]
+}
